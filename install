@@ -1,0 +1,6 @@
+all:
+	g++ main.cpp -o /usr/bin/automaker
+
+remove:
+	rm /usr/bin/automaker
+
