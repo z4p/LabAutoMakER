@@ -32,18 +32,22 @@ string dircpp() {
 int main(int argc, char **argv) {
     bool FRun = false;      // should we make&run program after creating Makefile?
     bool FClean = false;    // should we "make clear" after all?
+    
+    // pasring command-line arguments
     for(int i = 0; i < argc; i++) {
         if (strcmp(argv[i], "-r") == 0) FRun = true;
         if (strcmp(argv[i], "-cl") == 0) FClean = true;
     }
     
-    string ls = dircpp();
+    string ls = dircpp(); // list of .cpp
     
+    // creating a Makefile
     fstream f("Makefile", ios::out);
     f << "all:\n\tg++ --std=c++11 " + ls + " -o lab\n\n";
-    f << "clean:\n\trm -rf lab\n";
+    f << "clear:\n\trm -rf lab\n";
     f.close();
     
+    // make&run if needed
     if (FRun) {
         system("make");
         cout << "=====lab begin=====" << endl;
@@ -51,8 +55,9 @@ int main(int argc, char **argv) {
         cout << endl << "=====lab end=====" << endl;
     }
     
+    // make clear if needed
     if (FClean) {
-        system("make clean");
+        system("make clear");
         system("rm Makefile");
     }
     
