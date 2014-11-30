@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdio.h>
+#include <cstdio>
 #include <fstream>
 #include <string>
 #include <cstring>
@@ -7,6 +7,8 @@
 
 using namespace std;
 
+// getting list of .cpp files in current directory
+//TODO: rewrite this shit. But it works now
 string dircpp() {
     system("ls *.cpp > ls.txt");
     fstream f("ls.txt", ios::in);
@@ -16,7 +18,7 @@ string dircpp() {
         string tmp = fn;
         f >> fn;
         if (fn == tmp) {
-            break; // костыль для отмены последнего повторного чтения из файла
+            break; // previnting reading the last filename twice
         }
         res += " " + fn;
     }
