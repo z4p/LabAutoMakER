@@ -30,7 +30,8 @@ string dircpp() {
 }
 
 int main(int argc, char **argv) {
-    bool FRun = false, FClean = false;
+    bool FRun = false;      // should we make&run program after creating Makefile?
+    bool FClean = false;    // should we "make clear" after all?
     for(int i = 0; i < argc; i++) {
         if (strcmp(argv[i], "-r") == 0) FRun = true;
         if (strcmp(argv[i], "-cl") == 0) FClean = true;
